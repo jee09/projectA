@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<meta charset="utf-8" />
+<meta charset="utf-8"/>
 <title>jQuery 로그인</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">
-    function login_ajax(value)
-    {
+    function login_ajax(value) {
         var form_data =
             {
-                id: $("#userId").val(),
-                pw: $("#userPw").val()
+                id: $("#userID").val(),
+                id: $("#userPw").val()
             };
         console.log(form_data);
 
         $.ajax({
-            type: "GET",
-            url: "/Models/ajax.php",
-            dataType: "json",
-            data: form_data,
-            success: function(response)
-            {
-                alert("code:"+response.status+"\n");
-            },
-            error:function(request,status,error)
-            {
-                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            url: 'ajax/login',
+            dataType: 'json',
+            type: 'post',
+            data: $(value).serialize(),
+            success: function (value) {
+
+            }
+            error: function (xhr, status, error) {
+
             }
         });
-        console.log(1);
     }
 </script>
 
